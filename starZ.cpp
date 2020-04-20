@@ -17,7 +17,26 @@ void runTests(void);
 string starZ(int width)
 {
   string result="";
-  result = "stub"; // TODO: remove this line, replace with correct code
+  if (width < 3)
+  {
+    return result;
+  }
+
+  for (int i = 0; i < width; i++)
+  {
+    for (int j = 0; j < width; j++)
+    {
+      if (i == 0 || i == width - 1)
+        result += "*";
+      else if (width-1-j == i)
+        result += "*";
+      else
+        result += " ";
+      
+      if (j == width-1)
+        result += "\n";
+    }
+  }
   return result;
 }
 
@@ -64,17 +83,21 @@ void assertEquals(string expected, string actual, string message="") {
 int main(int argc, char *argv[])
 {
 
-  // TODO: Add check for parameter
-  // and code to print usage message
+  if (argc != 2)
+  {
+    cout << "Usage: ./starZ" << endl;
+    exit(1);
+  }
 
-  // TODO: Add code to get width from cmd line arg
-  // code that checks if it is -1; if so, call runTests()
-  // then exit.
+  int width = atoi(argv[1]);
+  
+  if (width == -1)
+  {
+    runTests();
+    exit(1);
+  }
 
-  runTests();
-
-  // TODO: Add code that calls the starZ function and prints
-  // the result on cout (without an extra newline)
+  cout << starZ(width);
 
   return 0;
 }
