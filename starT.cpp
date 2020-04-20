@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 
   if (argc != 3)
   {
-    cout << "Usage: ./starT width height\n";
+    cerr << "Usage: ./starT width height\n";
     exit(1);
   }
 
